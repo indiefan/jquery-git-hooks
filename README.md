@@ -19,8 +19,8 @@ Enter my Pre-Commit hook
 
 The Solutions:
 
-1. Minifies any *.js file that has been changed in this commit automatically (names it *.min.js)
-2. Wraps any *.js file that has been changed in a self-calling annonymous-function closure (that thing i mentioned earlier)
+1. Minifies any .js file that has been changed in this commit automatically (names it .min.js)
+2. Wraps any .js file that has been changed in a self-calling annonymous-function closure (that thing i mentioned earlier)
 3. Strips out any lines that call console.log
 
 ####Installation and Requirements
