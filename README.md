@@ -6,9 +6,11 @@ The Problems:
 
 1. Usually by the time I do a commit I want to create minified deployment versions of my scripts. Even with jsmin it can be tedious manually minifying scripts all the time.
 2. I'm a fan of automated testing (QUnit ftw). Unfortunately, i'm also a fan of self-calling anonymous-function closures, or:
-	(function($) {
-		//Code here...
-	})(jQuery);
+	
+		(function($) {
+			//Code here...
+		})(jQuery);
+	
 Frustratingly, you can't test functions inside of these closures. So i usually have my dev code set up without them, then add the wrapping closure to the deploy version.
 3. Sometimes i add some debug output to my dev code (i.e. console.log) that, while i don't want it in the deploy script, i may want to leave around so that i don't have to re-add it all the time
 
