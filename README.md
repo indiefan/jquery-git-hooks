@@ -23,6 +23,17 @@ The Solutions:
 2. Wraps any .js file that has been changed in a self-calling annonymous-function closure (that thing i mentioned earlier)
 3. Strips out any lines that call console.log
 
+In other words, if you're working on a file named:
+
+	jquery.myplugin.js
+
+After a commit you'll have:
+
+	jquery.myplugin.js
+	jquery.myplugin.min.js
+	
+The original will be untouched, the min will be ready for deployment.
+
 ####Installation and Requirements
 Pre-Commit uses jsmin (included here). Simple drop the jsmin script somewhere in your path. This is the ruby version, so ruby is also required. If you already have a jsmin installed, that's fine too. As long as the jsmin command is found.
 
