@@ -15,7 +15,9 @@ The Problems:
 
 3. Sometimes i add some debug output to my dev code (i.e. console.log) that, while i don't want it in the deploy script, i may want to leave around so that i don't have to re-add it all the time
 
-Enter my Pre-Commit hook
+Enter my Pre-Commit hook.
+
+The first hook is the pre-commit.jquery hook. This hook is specifically for jQuery development
 
 The Solutions:
 
@@ -33,6 +35,8 @@ After a commit you'll have:
 	jquery.myplugin.min.js
 	
 The original will be untouched, the min will be ready for deployment.
+
+Alternatively, if you just want a hook that will minify any .js files that have been changed, i've included a pre-commit.minify-only hook that does that. Just rename it to pre-commit and drop it in your hooks folder. Be sure that it's executable.
 
 ####Installation and Requirements
 Pre-Commit uses jsmin (included here). Simple drop the jsmin script somewhere in your path. This is the ruby version, so ruby is also required. If you already have a jsmin installed, that's fine too. As long as the jsmin command is found.

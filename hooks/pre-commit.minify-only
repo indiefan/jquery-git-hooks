@@ -1,0 +1,24 @@
+#! /bin/bash
+
+git_dir_full=$(cd $GIT_DIR; pwd)
+repo_dir=${git_dir_full%/.git}
+
+git diff --cached --name-only | grep ".js" | grep -v ".min.js" | while read file; do
+	full_path=${repo_dir}/${file}
+	sub_dir=`dirname $file`
+	base=`basename $file .js`
+	
+	path=${repo_dir}/${sub_dir}/${base}
+
+	if [ -e ${path}.min.js ]
+	then
+		rm -f ${path}.min.js
+	fi
+
+	if command -v jsmin &>/dev/null
+	then
+		jsmin < $full_path > ${path}.min.js
+	else
+		echo "Minify Hook Failed: jsmin not found."
+	fi
+done
