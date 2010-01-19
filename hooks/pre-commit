@@ -1,0 +1,32 @@
+#! /bin/bash
+
+git_dir_full=$(cd $GIT_DIR; pwd)
+repo_dir=${git_dir_full%/.git}
+
+git diff --cached --name-only | while read file; do
+	full_path=${repo_dir}/${file}
+	sub_dir=`dirname $file`
+	base=`basename $file .js`
+	path=${repo_dir}/${sub_dir}/${base}
+	temp=${path}.tmp
+
+	if [ -e ${path}.min.js ]
+	then
+		rm -f ${path}.min.js
+	fi
+
+	echo "(function($) {" > $temp
+
+	cat $full_path | grep -vi "console.log" >> $temp
+
+	echo "})(jQuery);" >> $temp
+
+	if command -v jsmin &>/dev/null
+	then
+		jsmin < $temp > ${path}.min.js
+	else
+		echo "Minify Hook Failed: jsmin not found."
+	fi
+
+	rm -f $temp
+done
