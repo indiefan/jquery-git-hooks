@@ -11,7 +11,8 @@ The Problems:
 			//Code here...
 		})(jQuery);
 	
-Frustratingly, you can't test functions inside of these closures. So i usually have my dev code set up without them, then add the wrapping closure to the deploy version.
+	Frustratingly, you can't test functions inside of these closures. So i usually have my dev code set up without them, then add the wrapping closure to the deploy version.
+
 3. Sometimes i add some debug output to my dev code (i.e. console.log) that, while i don't want it in the deploy script, i may want to leave around so that i don't have to re-add it all the time
 
 Enter my Pre-Commit hook
