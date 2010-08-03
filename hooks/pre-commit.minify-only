@@ -3,7 +3,7 @@
 git_dir_full=$(cd $GIT_DIR; pwd)
 repo_dir=${git_dir_full%/.git}
 
-git diff --cached --name-only | grep ".js" | grep -v ".min.js" | while read file; do
+git diff --cached --name-only | grep "\.js" | grep -v ".min.js" | while read file; do
 	full_path=${repo_dir}/${file}
 	sub_dir=`dirname $file`
 	base=`basename $file .js`
